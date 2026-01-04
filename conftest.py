@@ -7,7 +7,7 @@ load_dotenv()
 @pytest_asyncio.fixture
 async def page():
     async with async_playwright() as p:
-        browser = await p.chromium.launch(headless=False)
+        browser = await p.chromium.launch(headless=True, args=["--no-sandbox"])
         page = await browser.new_page()
         yield page
         input("Press ENTER to close the browser...")
